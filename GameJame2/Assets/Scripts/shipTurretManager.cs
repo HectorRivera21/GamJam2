@@ -13,7 +13,6 @@ public class shipTurretManager : MonoBehaviour
 
     void Start()
     {   
-
         // suppose to determine how much each turret should be spaced apart
         float angleStep = 360f / turrets.Count;  // Angle step between each turret
         // holds the angles for turrets
@@ -23,15 +22,13 @@ public class shipTurretManager : MonoBehaviour
         // calculates initial angles
         for (int i = 0; i < turrets.Count / 2; i++)
         {
-        positiveAngles.Add(currentAngle);
-        negativeAngles.Add(-currentAngle);
+            positiveAngles.Add(currentAngle);
+            negativeAngles.Add(-currentAngle);
 
-        currentAngle += angleStep;
+            currentAngle += angleStep;
         }
-    
-
         // makes the turret follow mouse smoothly
-         int halfCount = turrets.Count / 2;
+        int halfCount = turrets.Count / 2;
         for (int i = 0; i < turrets.Count; i++)
         {
             var turret = turrets[i];
@@ -46,8 +43,8 @@ public class shipTurretManager : MonoBehaviour
                 turret.initialAngle = negativeAngles[i - halfCount];
             }
 
-        turret.SetAngle(turret.initialAngle);
-    }
+            turret.SetAngle(turret.initialAngle);
+        }
 
         SelectTurret(currentTurretIndex);  // Select the initial turret
     }
@@ -81,26 +78,26 @@ public class shipTurretManager : MonoBehaviour
     void Aim(Vector2 targetPosition)
     {   
 
-    turret_barrel currentTurret = turrets[currentTurretIndex];
+        turret_barrel currentTurret = turrets[currentTurretIndex];
 
-    // Calculate direction vector towards the target position
-    Vector2 direction = targetPosition - (Vector2)currentTurret.centerPoint.position;
+        // Calculate direction vector towards the target position
+        Vector2 direction = targetPosition - (Vector2)currentTurret.centerPoint.position;
 
-    // Calculate the angle in degrees from the direction vector
-    float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Calculate the angle in degrees from the direction vector
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-    // Normalize the angle to ensure it's within -180 to 180 degrees range
-    targetAngle = NormalizeAngle(targetAngle);
+        // Normalize the angle to ensure it's within -180 to 180 degrees range
+        targetAngle = NormalizeAngle(targetAngle);
 
-    // Calculate the difference between target angle and initial angle
-    float angleDifference = targetAngle - currentTurret.initialAngle;
+        // Calculate the difference between target angle and initial angle
+        float angleDifference = targetAngle - currentTurret.initialAngle;
 
-    // Clamp the angle difference within the allowed range
-    float clampedDifference = Mathf.Clamp(angleDifference, currentTurret.minAimAngle, currentTurret.maxAimAngle);
+        // Clamp the angle difference within the allowed range
+        float clampedDifference = Mathf.Clamp(angleDifference, currentTurret.minAimAngle, currentTurret.maxAimAngle);
 
-    // Set the final angle for the turret barrel
-    float clampedAngle = currentTurret.initialAngle + clampedDifference;
-    currentTurret.SetAngle(clampedAngle);
+        // Set the final angle for the turret barrel
+        float clampedAngle = currentTurret.initialAngle + clampedDifference;
+        currentTurret.SetAngle(clampedAngle);
     }
 
     float NormalizeAngle(float angle)
@@ -108,14 +105,14 @@ public class shipTurretManager : MonoBehaviour
         while (angle > 180f) angle -= 360f;
         while (angle < -180f) angle += 360f;
         
-       if (angle < -90f)
-    {
-        angle += 360f;
-    }
-    else if (angle > 90f)
-    {
-        angle -= 360f;
-    }
+       if (angle < -360f)
+       {
+           angle += 360f;
+       }
+       else if (angle > 360f)
+       {
+           angle -= 360f;
+       }
         return angle;
     }
 }
