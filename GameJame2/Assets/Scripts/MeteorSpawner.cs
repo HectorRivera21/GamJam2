@@ -9,8 +9,8 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField] private float spawnRate = 0.5f;
     private int randX = 0;
     private int randY = 0;
-    private int maxRange = 20;
-    private int minRange = -20;
+    private int maxRange = 200;
+    private int minRange = -200;
     void Start()
     {
         //do nothing rn
@@ -28,6 +28,6 @@ public class MeteorSpawner : MonoBehaviour
 
     private void spawn_meteor()
     {
-           Instantiate(meteor, new Vector3(randX, randY, 0), Quaternion.identity);
+           Instantiate(meteor, new Vector2(randX, randY), Quaternion.identity);
     }
 }
