@@ -10,6 +10,14 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    public void GoToCredits(){
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void GoToMainMenu(){
+        SceneManager.LoadScene("StartScreen");
+    }
+
     public void QuitGame(){
         Application.Quit();
     }
