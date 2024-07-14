@@ -11,7 +11,7 @@ public class Meteor : MonoBehaviour
     
     void Start()
     {
-        //do nothing
+        //do nothin
     }
 
     void Update()
