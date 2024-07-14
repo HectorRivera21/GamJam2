@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     void changeScore()
     {
         player_score.text = "PlayerScore: " + playerscore;
-        if(playerscore > highscore)
+        if (playerscore > highscore)
         {
             high_score.text = "HighScore: " + playerscore;
         }
@@ -51,11 +51,11 @@ public class GameManager : MonoBehaviour
 
     void SaveScore()
     {
-        if(playerscore > PlayerPrefs.GetInt(ScoreKey,0))
+        if (playerscore > PlayerPrefs.GetInt(ScoreKey, 0))
         {
             PlayerPrefs.SetInt(ScoreKey, playerscore);
-        }    
-        
+        }
+
     }
 
     void LoadScore()
@@ -66,3 +66,4 @@ public class GameManager : MonoBehaviour
             high_score.text = "HighScore: " + highscore;
         }
     }
+}
