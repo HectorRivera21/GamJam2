@@ -105,17 +105,8 @@ public class shipTurretManager : MonoBehaviour
 
     float NormalizeAngle(float angle)
     {
-        while (angle > 180f) angle -= 360f;
-        while (angle < -180f) angle += 360f;
-        
-       if (angle < -90f)
-    {
-        angle += 360f;
-    }
-    else if (angle > 90f)
-    {
-        angle -= 360f;
-    }
-        return angle;
+      while (angle > 360f) angle -= 360f;
+    while (angle < 0f) angle += 360f;
+    return angle;
     }
 }

@@ -354,15 +354,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d0270b5cd9224478b76cd3b6f1841e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2460055812120820645, guid: 0ead04391bb91e245b601e20d61aee9d, type: 3}
+  bulletPrefab: {fileID: 2460055812120820645, guid: 73dcc7eb9627f24448ed0eec9c53e0d0, type: 3}
   firePoint: {fileID: 1553489336}
   fireForce: 20
   centerPoint: {fileID: 1591785702}
   radius: 10
   angle: 0
-  initialAngle: -90
-  minAimAngle: -90
-  maxAimAngle: 90
+  initialAngle: 90
+  minAimAngle: 0
+  maxAimAngle: 180
 --- !u!4 &823008759
 Transform:
   m_ObjectHideFlags: 0
@@ -461,15 +461,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d0270b5cd9224478b76cd3b6f1841e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2460055812120820645, guid: 0ead04391bb91e245b601e20d61aee9d, type: 3}
+  bulletPrefab: {fileID: 2460055812120820645, guid: 73dcc7eb9627f24448ed0eec9c53e0d0, type: 3}
   firePoint: {fileID: 1287668750}
   fireForce: 20
   centerPoint: {fileID: 1591785702}
   radius: 10
   angle: 180
-  initialAngle: 180
-  minAimAngle: 90
-  maxAimAngle: 270
+  initialAngle: 270
+  minAimAngle: 180
+  maxAimAngle: 360
 --- !u!4 &884929147
 Transform:
   m_ObjectHideFlags: 0
