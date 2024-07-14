@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private void OnCollisionEnter2D(Collision2D collision){
+        //where we destroy Hectors incoming mobs
+        Destroy(gameObject);
+        //where we check if we hit enemy
+        //also dmg enemy
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

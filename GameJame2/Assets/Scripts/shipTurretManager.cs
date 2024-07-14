@@ -7,36 +7,47 @@ public class shipTurretManager : MonoBehaviour
 
     public List<turret_barrel> turrets;
     public Transform centerPoint;
-    public float minAimAngle = -90f; // Minimum angle for aiming
-    public float maxAimAngle = 90f;  // Maximum angle for aiming
     private int currentTurretIndex = 0;
-    private float currentAngle = 0f;
+    float currentAngle = 0f;
 
 
     void Start()
-    {
+    {   
 
+        // suppose to determine how much each turret should be spaced apart
         float angleStep = 360f / turrets.Count;  // Angle step between each turret
+        // holds the angles for turrets
+        List<float> positiveAngles = new List<float>();
+        List<float> negativeAngles = new List<float>();
 
-
-        foreach (var turret in turrets)
+        // calculates initial angles
+        for (int i = 0; i < turrets.Count / 2; i++)
         {
-            Debug.Log(turret.transform.position);
-            // Calculate position and angle for each turret around centerPoint
-            turret.centerPoint = centerPoint;
-            turret.initialAngle = NormalizeAngle(currentAngle);
-            turret.SetAngle(turret.initialAngle);
+        positiveAngles.Add(currentAngle);
+        negativeAngles.Add(-currentAngle);
 
-            if(turret.transform.position.x > 0){
-                Debug.Log(currentAngle);
-                currentAngle += angleStep;
-                Debug.Log(currentAngle);
-            } else {
-                Debug.Log(currentAngle);
-                currentAngle -= angleStep;
-                Debug.Log(currentAngle);
-            }
+        currentAngle += angleStep;
         }
+    
+
+        // makes the turret follow mouse smoothly
+         int halfCount = turrets.Count / 2;
+        for (int i = 0; i < turrets.Count; i++)
+        {
+            var turret = turrets[i];
+            turret.centerPoint = centerPoint;
+
+            if (i < halfCount)
+            {
+                turret.initialAngle = positiveAngles[i];
+            }
+            else
+            {
+                turret.initialAngle = negativeAngles[i - halfCount];
+            }
+
+        turret.SetAngle(turret.initialAngle);
+    }
 
         SelectTurret(currentTurretIndex);  // Select the initial turret
     }
@@ -62,7 +73,7 @@ public class shipTurretManager : MonoBehaviour
         for (int i = 0; i < turrets.Count; i++)
         {
             turrets[i].enabled = (i == index);  // Enable the selected turret
-            //turrets[i].SetAngle(turrets[i].angle); //maintain position of selected turret
+            //[i].SetAngle(turrets[i].angle); //maintain position of selected turret
             
         }
     }
@@ -85,7 +96,7 @@ public class shipTurretManager : MonoBehaviour
     float angleDifference = targetAngle - currentTurret.initialAngle;
 
     // Clamp the angle difference within the allowed range
-    float clampedDifference = Mathf.Clamp(angleDifference, minAimAngle, maxAimAngle);
+    float clampedDifference = Mathf.Clamp(angleDifference, currentTurret.minAimAngle, currentTurret.maxAimAngle);
 
     // Set the final angle for the turret barrel
     float clampedAngle = currentTurret.initialAngle + clampedDifference;
@@ -96,6 +107,15 @@ public class shipTurretManager : MonoBehaviour
     {
         while (angle > 180f) angle -= 360f;
         while (angle < -180f) angle += 360f;
+        
+       if (angle < -90f)
+    {
+        angle += 360f;
+    }
+    else if (angle > 90f)
+    {
+        angle -= 360f;
+    }
         return angle;
     }
 }
