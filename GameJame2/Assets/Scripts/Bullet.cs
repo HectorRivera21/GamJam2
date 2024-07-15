@@ -22,12 +22,12 @@ public class Bullet : MonoBehaviour
     {
         if (transform.position.x < -screenHalfWidth || transform.position.x > screenHalfWidth)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         
         if (transform.position.y < -screenHalfHeight || transform.position.y > screenHalfHeight)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
          
     }

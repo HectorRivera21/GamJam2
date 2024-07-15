@@ -21,7 +21,7 @@ public class GameOver : MonoBehaviour
     {
             if (ship.currentHealth <= 0)
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("StartScreen");
             }
     }
 }
