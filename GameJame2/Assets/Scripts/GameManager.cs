@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     void changeScore()
     {
-        player_score.text = "PlayerScore: " + playerscore;
+        player_score.text = "Score: " + playerscore;
         if (playerscore > highscore)
         {
             high_score.text = "HighScore: " + playerscore;

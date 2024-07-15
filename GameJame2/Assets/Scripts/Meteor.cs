@@ -6,7 +6,7 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {   
     [SerializeField] private GameObject target;
-    [SerializeField] private float speed = 8.5f;
+    [SerializeField] private float speed = 10.5f;
     private int scoreValue = 100;
     public int meteor_health = 100;
     private Player ship;
@@ -29,6 +29,7 @@ public class Meteor : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(target.transform.position);
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
     void TakeDamage(int damage)

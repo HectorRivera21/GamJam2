@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529534ee9a9516843bf439ff8cc25159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 3924923880349038343, guid: 2bd3f81e73aa1ae44a03ced0ee30a8c3, type: 3}
+  target: {fileID: 5742586589952353021, guid: 2bd3f81e73aa1ae44a03ced0ee30a8c3, type: 3}
   speed: 8.51
   meteor_health: 100
 --- !u!61 &5343244899477054350
