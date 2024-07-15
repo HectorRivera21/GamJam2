@@ -6,7 +6,7 @@ public class MeteorSpawner : MonoBehaviour
 {
     // Start is called before the first frame update\
     [SerializeField] private GameObject meteor;
-    [SerializeField] private float spawnRate = 0.5f;
+    [SerializeField] private float spawnRate = 1.5f;
     private int randX = 0;
     private int randY = 0;
     private int maxRange = 200;
