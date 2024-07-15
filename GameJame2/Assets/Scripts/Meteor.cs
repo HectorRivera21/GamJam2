@@ -29,7 +29,6 @@ public class Meteor : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(target.transform.position);
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
     void TakeDamage(int damage)
