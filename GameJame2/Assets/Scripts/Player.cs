@@ -16,12 +16,12 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            TakeDamage(20);
-        }
+        // if(Input.GetKeyDown(KeyCode.Space)){
+        //     PlayerTakeDamage(20);
+        // }
     }
 
-    void TakeDamage(int damage){
+    public void PlayerTakeDamage(int damage){
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
