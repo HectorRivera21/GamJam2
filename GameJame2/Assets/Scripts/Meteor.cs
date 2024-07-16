@@ -49,19 +49,22 @@ public class Meteor : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject != null){
-            if (collision.gameObject.tag == "bullet")
+        if (collision != null)
+        {
+            if (collision.gameObject != null)
             {
-                TakeDamage(100);
-                GameManager.Instance.AddScore(scoreValue);
-            }
-            else if (collision.gameObject.tag == "Player")
-            {
-                DestroyMeteor();
-                ship.PlayerTakeDamage(10);
-                GameManager.Instance.AddScore(-100);
+                if (collision.gameObject.tag == "bullet")
+                {
+                    TakeDamage(100);
+                    GameManager.Instance.AddScore(scoreValue);
+                }
+                else if (collision.gameObject.tag == "Player")
+                {
+                    DestroyMeteor();
+                    ship.PlayerTakeDamage(10);
+                    GameManager.Instance.AddScore(-100);
+                }
             }
         }
     }
-    
 }

@@ -7,36 +7,31 @@ public class Bullet : MonoBehaviour
     float screenHalfWidth;
     float screenHalfHeight;
 
-    // Start is called before the first frame update
     void Start()
     {
-        float halfBulletWidth = transform.localScale.x / 2f;
-        float halfBulletHeight = transform.localScale.y / 2f;
+        Renderer bulletRenderer = GetComponent<Renderer>();
 
-        screenHalfWidth = Camera.main.aspect * Camera.main.orthographicSize - halfBulletWidth;
-        screenHalfHeight = Camera.main.orthographicSize - halfBulletHeight;
+        // Get the actual width and height of the bullet sprite
+        float halfBulletWidth = bulletRenderer.bounds.size.x / 2f;
+        float halfBulletHeight = bulletRenderer.bounds.size.y / 2f;
+
+        screenHalfWidth = (Camera.main.aspect * Camera.main.orthographicSize - halfBulletWidth)*1.5f;
+        screenHalfHeight = (Camera.main.orthographicSize - halfBulletHeight)*1.5f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < -screenHalfWidth || transform.position.x > screenHalfWidth)
+        if (transform.position.x < -175 || transform.position.x > screenHalfWidth ||
+           transform.position.y < -175 || transform.position.y > screenHalfHeight)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
-        
-        if (transform.position.y < -screenHalfHeight || transform.position.y > screenHalfHeight)
-        {
-            //Destroy(gameObject);
-        }
-         
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "meteor")
+        if (collision.gameObject.CompareTag("meteor"))
         {
             Destroy(gameObject);
-            
         }
     }
 }
