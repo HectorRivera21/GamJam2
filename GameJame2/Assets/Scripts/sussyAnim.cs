@@ -16,7 +16,6 @@ public class sussyAnim : MonoBehaviour
     {
         //anim = GetComponent<Animation>();
     }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -26,8 +25,7 @@ public class sussyAnim : MonoBehaviour
         if(isMoving){
             moveToTerminal();
         }
-    }
-    
+    }    
     void setTerminalPosition()
     {
         if (currIndex == 0)
@@ -42,7 +40,6 @@ public class sussyAnim : MonoBehaviour
         }
         isMoving = true;
     }
-
     void moveToTerminal()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
@@ -53,10 +50,9 @@ public class sussyAnim : MonoBehaviour
         }
     }
      void OnTriggerEnter2D(Collider2D collision)
-    {
+     {
         Vector2 newPosition = transform.position;
         newPosition.y -= 0.35f;
         transform.position =newPosition;
-        Debug.Log("Collision with stairs detected. Moving down.");
-    }
+     }
 }

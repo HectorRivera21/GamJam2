@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     private Player ship;
+    private bool isGameover = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +20,9 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (ship.currentHealth <= 0)
+            if (!isGameover && ship != null && ship.currentHealth <= 0)
             {
+                isGameover = true;
                 SceneManager.LoadScene("StartScreen");
             }
     }
