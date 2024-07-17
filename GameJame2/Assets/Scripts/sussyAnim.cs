@@ -10,11 +10,12 @@ public class sussyAnim : MonoBehaviour
     int currIndex;
     private Vector2 targetPosition;
     private bool isMoving;
-    private bool flipZ;
-    
+    //Animation anim;
+    // ^ and other animation comments require the animation component but it looks weird idk so i just used this janky way
     void Start()
     {
         //anim = GetComponent<Animation>();
+        setTerminalPosition();
     }
     void Update()
     {
@@ -23,23 +24,33 @@ public class sussyAnim : MonoBehaviour
             setTerminalPosition();
         }
         if(isMoving){
+            //anim.Play();
             moveToTerminal();
-        }
+        } //else{
+        //     anim.Stop();
+        // }
     }    
+    //gets the position of whatever terminal is next and flips trhe sprite
     void setTerminalPosition()
     {
+        Quaternion newRotation = transform.rotation;
+        
         if (currIndex == 0)
         {
             targetPosition = Lterminal.transform.position;
             currIndex++;
+            newRotation.y = 180;
         }
         else
         {
             targetPosition = Rterminal.transform.position;
             currIndex--;
+            newRotation.y = 0;
         }
         isMoving = true;
+        transform.rotation = newRotation;
     }
+    //move to the terminals
     void moveToTerminal()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
@@ -49,10 +60,11 @@ public class sussyAnim : MonoBehaviour
             isMoving = false;
         }
     }
-     void OnTriggerEnter2D(Collider2D collision)
+    //go up the stairs
+    void OnTriggerEnter2D(Collider2D collision)
      {
         Vector2 newPosition = transform.position;
-        newPosition.y -= 0.35f;
+        newPosition.y += 0.5f;
         transform.position =newPosition;
      }
 }
