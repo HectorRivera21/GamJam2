@@ -7,7 +7,7 @@ public class shipTurretManager : MonoBehaviour
 
     public List<turret_barrel> turrets;
     public Transform centerPoint;
-    private int currentTurretIndex = 0;
+    public int currentTurretIndex = 0;
     float currentAngle = 0f;
 
 

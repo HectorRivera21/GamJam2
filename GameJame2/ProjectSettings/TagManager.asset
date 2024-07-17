@@ -6,14 +6,15 @@ TagManager:
   tags:
   - meteor
   - bullet
+  - stairs
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
-  - 
+  - screen
   - 
   - 
   - 
