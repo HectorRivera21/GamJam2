@@ -16,9 +16,6 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        // if(Input.GetKeyDown(KeyCode.Space)){
-        //     PlayerTakeDamage(20);
-        // }
     }
 
     public void PlayerTakeDamage(int damage){

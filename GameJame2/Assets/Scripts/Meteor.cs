@@ -6,7 +6,7 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {   
     [SerializeField] private GameObject target;
-    [SerializeField] private float speed = 8.5f;
+    [SerializeField] private float speed = 10.5f;
     private int scoreValue = 100;
     public int meteor_health = 100;
     private Player ship;
@@ -49,19 +49,22 @@ public class Meteor : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject != null){
-            if (collision.gameObject.tag == "bullet")
+        if (collision != null)
+        {
+            if (collision.gameObject != null)
             {
-                TakeDamage(100);
-                GameManager.Instance.AddScore(scoreValue);
-            }
-            else if (collision.gameObject.tag == "Player")
-            {
-                DestroyMeteor();
-                ship.PlayerTakeDamage(10);
-                GameManager.Instance.AddScore(-100);
+                if (collision.gameObject.tag == "bullet")
+                {
+                    TakeDamage(100);
+                    GameManager.Instance.AddScore(scoreValue);
+                }
+                else if (collision.gameObject.tag == "Player")
+                {
+                    DestroyMeteor();
+                    ship.PlayerTakeDamage(10);
+                    GameManager.Instance.AddScore(-100);
+                }
             }
         }
     }
-    
 }
